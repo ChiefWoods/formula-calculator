@@ -2,9 +2,23 @@
   export let id: string;
   export let className: string;
   export let content: string;
+  export let key: Array<string>;
+
+  function handleKeyDown(e: KeyboardEvent) {
+    if (key.includes(e.key)) {
+      className += " active";
+    }
+  }
+
+  function handleKeyUp(e: KeyboardEvent) {
+    if (key.includes(e.key)) {
+      className = className.replace(" active", "");
+    }
+  }
 </script>
 
 <button {id} class={className}>{content}</button>
+<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
 
 <style>
   :root {
@@ -24,7 +38,7 @@
 
   button {
     cursor: pointer;
-    font-family: 'Courier Prime', monospace;
+    font-family: "Courier Prime", monospace;
     font-size: 3rem;
     border-radius: 6px;
     color: var(--key-white);
@@ -39,7 +53,8 @@
     background: var(--key-white-hover);
   }
 
-  #negative:active, #negative.active {
+  #negative:active,
+  #negative.active {
     background: var(--key-white-active);
   }
 
@@ -52,7 +67,8 @@
     background: var(--key-orange-hover);
   }
 
-  .erase:active, .erase.active {
+  .erase:active,
+  .erase.active {
     background: var(--key-orange-active);
   }
 
@@ -65,7 +81,8 @@
     background: var(--key-blue-hover);
   }
 
-  .operator:active, .operator.active {
+  .operator:active,
+  .operator.active {
     background: var(--key-blue-active);
   }
 
@@ -78,7 +95,8 @@
     background: var(--key-grey-hover);
   }
 
-  .digit:active, .digit.active {
+  .digit:active,
+  .digit.active {
     background: var(--key-grey-active);
   }
 

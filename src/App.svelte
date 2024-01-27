@@ -22,25 +22,50 @@
       </div>
     </div>
     <div id="keypad">
-      <Button id="negative" className="negative" content="&#177;" />
-      <Button id="clear" className="erase" content="C" />
-      <Button id="backspace" className="erase" content="&#8592;" />
-      <Button id="divide" className="operator" content="&#247;" />
-      <Button id="seven" className="digit" content="7" />
-      <Button id="eight" className="digit" content="8" />
-      <Button id="nine" className="digit" content="9" />
-      <Button id="multiply" className="operator" content="&#215;" />
-      <Button id="four" className="digit" content="4" />
-      <Button id="five" className="digit" content="5" />
-      <Button id="six" className="digit" content="6" />
-      <Button id="subtract" className="operator" content="&#8722;" />
-      <Button id="one" className="digit" content="1" />
-      <Button id="two" className="digit" content="2" />
-      <Button id="three" className="digit" content="3" />
-      <Button id="add" className="operator" content="&#43;" />
-      <Button id="zero" className="digit" content="0" />
-      <Button id="decimal" className="digit" content="." />
-      <Button id="equals" className="operator" content="&#61;" />
+      <Button
+        id="negative"
+        className="negative"
+        content="&#177;"
+        key={["n", "N"]}
+      />
+      <Button
+        id="clear"
+        className="erase"
+        content="C"
+        key={["Escape", "c", "C"]}
+      />
+      <Button
+        id="backspace"
+        className="erase"
+        content="&#8592;"
+        key={["Backspace", "Delete"]}
+      />
+      <Button id="divide" className="operator" content="&#247;" key={["/"]} />
+      <Button id="seven" className="digit" content="7" key={["7"]} />
+      <Button id="eight" className="digit" content="8" key={["8"]} />
+      <Button id="nine" className="digit" content="9" key={["9"]} />
+      <Button id="multiply" className="operator" content="&#215;" key={["*"]} />
+      <Button id="four" className="digit" content="4" key={["4"]} />
+      <Button id="five" className="digit" content="5" key={["5"]} />
+      <Button id="six" className="digit" content="6" key={["6"]} />
+      <Button
+        id="subtract"
+        className="operator"
+        content="&#8722;"
+        key={["-"]}
+      />
+      <Button id="one" className="digit" content="1" key={["1"]} />
+      <Button id="two" className="digit" content="2" key={["2"]} />
+      <Button id="three" className="digit" content="3" key={["3"]} />
+      <Button id="add" className="operator" content="&#43;" key={["+"]} />
+      <Button id="zero" className="digit" content="0" key={["0"]} />
+      <Button id="decimal" className="digit" content="." key={["."]} />
+      <Button
+        id="equals"
+        className="operator"
+        content="&#61;"
+        key={["=", "Enter"]}
+      />
     </div>
   </section>
 </main>
