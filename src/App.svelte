@@ -131,13 +131,16 @@
 
     const expression = input
       .replace(/[^0-9+−×÷.-]/g, "")
-      .replace(/−/g, "-")
+      .replace(/−-/g, "+")
       .replace(/×/g, "*")
       .replace(/÷/g, "/");
 
     let result = eval(expression);
     result = Math.round(result * 10000) / 10000;
-    if (result.toString().length > 9) result = result.toExponential(4);
+    
+    if (result.toString().length > 9) {
+      result = result.toExponential(4);
+    }
 
     input += ` = ${result}`;
     display = result;
