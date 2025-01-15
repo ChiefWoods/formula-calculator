@@ -21,46 +21,52 @@ Web calculator for Front End Development Libraries in [freeCodeCamp](https://www
 
 ### Languages
 
-- [![HTML5](https://img.shields.io/badge/HTML5-white?style=for-the-badge&logo=html5&logoColor=e65127)](https://html5.org/)
-- [![CSS3](https://img.shields.io/badge/CSS3-white?style=for-the-badge&logo=css3&logoColor=306AF1)](https://www.w3.org/Style/CSS/Overview.en.html)
-- [![TypeScript](https://img.shields.io/badge/TypeScript-white?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 - [![Svelte](https://img.shields.io/badge/Svelte-2e2e2e?style=for-the-badge&logo=svelte)](https://svelte.dev/)
 
 ### Bundlers
 
 - [![Vite](https://img.shields.io/badge/Vite-ffd028?style=for-the-badge&logo=Vite)](https://vitejs.dev/)
 
-### Tools
-
-- [![!Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-2c2c32?style=for-the-badge&logo=visual-studio-code&logoColor=007ACC)](https://code.visualstudio.com/)
-
 ## Getting Started
 
 ### Prerequisites
 
-Update your npm package to the latest version.
-```
-npm install npm@latest -g
+Update your Bun toolkit to the latest version.
+
+```bash
+bun upgrade
 ```
 
 ### Setup
 
 1. Clone the repository
 
-```
+```bash
 git clone https://github.com/ChiefWoods/formula-calculator.git
 ```
 
 2. Install all dependencies
 
-```
-npm install
+```bash
+bun install
 ```
 
 3. Start development server
 
+```bash
+bun run dev
 ```
-npm run dev
+
+4. Build project
+
+```bash
+bun run build
+```
+
+5. Preview build
+
+```bash
+bun run preview
 ```
 
 ## Issues

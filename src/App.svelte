@@ -7,6 +7,142 @@
   let shouldReset: boolean = false;
   let shouldClear: boolean = false;
 
+  const keypads = [
+    {
+      id: "negative",
+      className: "negative",
+      content: "&#177;",
+      key: ["n", "N"],
+      onclick: appendNegative,
+    },
+    {
+      id: "clear",
+      className: "erase",
+      content: "C",
+      key: ["Escape", "c", "C"],
+      onclick: clearScreen,
+    },
+    {
+      id: "backspace",
+      className: "erase",
+      content: "&#8592;",
+      key: ["Backspace", "Delete"],
+      onclick: backspace,
+    },
+    {
+      id: "divide",
+      className: "operator",
+      content: "&#247;",
+      key: ["/"],
+      onclick: appendOperator,
+    },
+    {
+      id: "seven",
+      className: "digit",
+      content: "7",
+      key: ["7"],
+      onclick: appendNumber,
+    },
+    {
+      id: "eight",
+      className: "digit",
+      content: "8",
+      key: ["8"],
+      onclick: appendNumber,
+    },
+    {
+      id: "nine",
+      className: "digit",
+      content: "9",
+      key: ["9"],
+      onclick: appendNumber,
+    },
+    {
+      id: "multiply",
+      className: "operator",
+      content: "&#215;",
+      key: ["*"],
+      onclick: appendOperator,
+    },
+    {
+      id: "four",
+      className: "digit",
+      content: "4",
+      key: ["4"],
+      onclick: appendNumber,
+    },
+    {
+      id: "five",
+      className: "digit",
+      content: "5",
+      key: ["5"],
+      onclick: appendNumber,
+    },
+    {
+      id: "six",
+      className: "digit",
+      content: "6",
+      key: ["6"],
+      onclick: appendNumber,
+    },
+    {
+      id: "subtract",
+      className: "operator",
+      content: "&#8722;",
+      key: ["-"],
+      onclick: appendOperator,
+    },
+    {
+      id: "one",
+      className: "digit",
+      content: "1",
+      key: ["1"],
+      onclick: appendNumber,
+    },
+    {
+      id: "two",
+      className: "digit",
+      content: "2",
+      key: ["2"],
+      onclick: appendNumber,
+    },
+    {
+      id: "three",
+      className: "digit",
+      content: "3",
+      key: ["3"],
+      onclick: appendNumber,
+    },
+    {
+      id: "add",
+      className: "operator",
+      content: "&#43;",
+      key: ["+"],
+      onclick: appendOperator,
+    },
+    {
+      id: "zero",
+      className: "digit",
+      content: "0",
+      key: ["0"],
+      onclick: appendNumber,
+    },
+    {
+      id: "decimal",
+      className: "digit",
+      content: ".",
+      key: ["."],
+      onclick: appendDecimal,
+    },
+    {
+      id: "equals",
+      className: "operator",
+      content: "&#61;",
+      key: ["=", "Enter"],
+      onclick: evaluate,
+    },
+  ];
+
   function appendNumber(number: string) {
     if (shouldClear) clearScreen();
 
@@ -81,7 +217,7 @@
         input += "0.";
         display = "0.";
         shouldReset = false;
-      } else if (/^\-$/.test(display)) {
+      } else if (/^-$/.test(display)) {
         // display only has a negative sign
         input += "0.";
         display += "0.";
@@ -137,7 +273,7 @@
 
     let result = eval(expression);
     result = Math.round(result * 10000) / 10000;
-    
+
     if (result.toString().length > 9) {
       result = result.toExponential(4);
     }
@@ -176,144 +312,14 @@
         </div>
       </div>
       <div id="screen">
-        <p id="input">{input}</p>
-        <p id="display">{display}</p>
+        <p id="input">{@html input}</p>
+        <p id="display">{@html display}</p>
       </div>
     </div>
     <div id="keypad">
-      <KeypadBtn
-        id="negative"
-        className="negative"
-        content="&#177;"
-        key={["n", "N"]}
-        on:active={appendNegative}
-      />
-      <KeypadBtn
-        id="clear"
-        className="erase"
-        content="C"
-        key={["Escape", "c", "C"]}
-        on:active={clearScreen}
-      />
-      <KeypadBtn
-        id="backspace"
-        className="erase"
-        content="&#8592;"
-        key={["Backspace", "Delete"]}
-        on:active={backspace}
-      />
-      <KeypadBtn
-        id="divide"
-        className="operator"
-        content="&#247;"
-        key={["/"]}
-        on:active={(e) => appendOperator(e.detail.data)}
-      />
-      <KeypadBtn
-        id="seven"
-        className="digit"
-        content="7"
-        key={["7"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="eight"
-        className="digit"
-        content="8"
-        key={["8"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="nine"
-        className="digit"
-        content="9"
-        key={["9"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="multiply"
-        className="operator"
-        content="&#215;"
-        key={["*"]}
-        on:active={(e) => appendOperator(e.detail.data)}
-      />
-      <KeypadBtn
-        id="four"
-        className="digit"
-        content="4"
-        key={["4"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="five"
-        className="digit"
-        content="5"
-        key={["5"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="six"
-        className="digit"
-        content="6"
-        key={["6"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="subtract"
-        className="operator"
-        content="&#8722;"
-        key={["-"]}
-        on:active={(e) => appendOperator(e.detail.data)}
-      />
-      <KeypadBtn
-        id="one"
-        className="digit"
-        content="1"
-        key={["1"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="two"
-        className="digit"
-        content="2"
-        key={["2"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="three"
-        className="digit"
-        content="3"
-        key={["3"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="add"
-        className="operator"
-        content="&#43;"
-        key={["+"]}
-        on:active={(e) => appendOperator(e.detail.data)}
-      />
-      <KeypadBtn
-        id="zero"
-        className="digit"
-        content="0"
-        key={["0"]}
-        on:active={(e) => appendNumber(e.detail.data)}
-      />
-      <KeypadBtn
-        id="decimal"
-        className="digit"
-        content="."
-        key={["."]}
-        on:active={appendDecimal}
-      />
-      <KeypadBtn
-        id="equals"
-        className="operator"
-        content="&#61;"
-        key={["=", "Enter"]}
-        on:active={evaluate}
-      />
+      {#each keypads as { id, className, content, key, onclick }}
+        <KeypadBtn {id} {className} {content} {key} {onclick} />
+      {/each}
     </div>
   </section>
 </main>

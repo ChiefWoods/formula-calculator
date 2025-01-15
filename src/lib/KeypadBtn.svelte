@@ -1,23 +1,26 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
+  let {
+    id,
+    className,
+    content,
+    key,
+    onclick,
+  }: {
+    id: string;
+    className: string;
+    content: string;
+    key: string[];
+    onclick: (data: string) => void;
+  } = $props();
 
-  export let id: string;
-  export let className: string;
-  export let content: string;
-  export let key: Array<string>;
-
-  const dispatch = createEventDispatcher();
-
-  function dispatchActive(e: MouseEvent | KeyboardEvent) {
-    const data = e instanceof MouseEvent ? content : e.key;
-
-    dispatch("active", { data });
+  function handleClick(e: MouseEvent | KeyboardEvent) {
+    onclick(e instanceof MouseEvent ? content : e.key);
   }
 
   function handleKeyDown(e: KeyboardEvent) {
     if (key.includes(e.key)) {
       className += " active";
-      dispatchActive(e);
+      handleClick(e);
     }
   }
 
@@ -28,8 +31,8 @@
   }
 </script>
 
-<button {id} class={className} on:click={dispatchActive}>{content}</button>
-<svelte:window on:keydown={handleKeyDown} on:keyup={handleKeyUp} />
+<button {id} class={className} onclick={handleClick}>{@html content}</button>
+<svelte:window onkeydown={handleKeyDown} onkeyup={handleKeyUp} />
 
 <style>
   :root {
