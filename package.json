@@ -8,7 +8,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "push": "git subtree push --prefix dist origin gh-pages",
     "prepare": "husky"
   },
   "devDependencies": {
